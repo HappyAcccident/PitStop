@@ -6,6 +6,11 @@
   background: rgba(137, 137, 137, 0.686);
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
 .card {
   display: grid;
   grid-template-columns: 1fr;
@@ -106,6 +111,12 @@
   font-size: 2rem;
 }
 
+#station {
+  color: gray;
+  font-size: 1.5rem;
+  text-wrap: nowrap;
+}
+
 #calories {
   color: blue;
   font-size: 3rem;
@@ -138,6 +149,12 @@
   background: #e3e5ff;
   color: #352bc0;
   border-color: #e3e5ff;
+}
+
+.bg-green-100 {
+  background: #ebf9e5;
+  color: green;
+  border-color: #ebf9e5;
 }
 
 .bg-yellow-100 {

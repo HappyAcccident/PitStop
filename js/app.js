@@ -1,0 +1,193 @@
+let state = [];
+
+function createFoodItem(nutritionalInfo, /*array*/
+                        foodName,
+                        timeServed, /*0 for breakfast, 1 for lunch, 2 for dinner*/
+                        calories,
+                        servingSize,
+                        gramsProtein,
+                        gramsCarbs,
+                        gramsFat,
+                        dietaryInfo, /*array*/
+                        allergens,
+                        station, /*0 for The Kitchen Table, 1 for The Grill, 2 for Plant Forward, and 3 for Waffle Bar*/
+                        stateIndex
+                    )
+{
+    return {
+        nutritionalInfo,
+        foodName,
+        timeServed,
+        calories,
+        servingSize,
+        gramsProtein,
+        gramsCarbs,
+        gramsFat,
+        dietaryInfo,
+        allergens,
+        station,
+        stateIndex
+    };
+}
+
+// The Kitchen Table Station (0)
+state.push(createFoodItem(["Low Fat"], "Grilled Chicken Breast", 1, 165, "3.5 oz", 31, 0, 3.6, ["Halal", "Gluten Free"], "", 0, state.length));
+state.push(createFoodItem(["High Protein"], "Turkey Meatballs", 1, 190, "3 oz", 23, 8, 8, ["Gluten Free"], "", 0, state.length));
+state.push(createFoodItem(["Low Carbs"], "Roasted Salmon", 2, 280, "3.5 oz", 25, 0, 17, ["Gluten Free"], "Fish", 0, state.length));
+state.push(createFoodItem(["Low Fat"], "Quinoa Salad", 1, 220, "1 cup", 8, 35, 7, ["Vegan", "Gluten Free"], "", 0, state.length));
+state.push(createFoodItem([], "Steamed Broccoli", 1, 55, "1 cup", 3.7, 11, 0.6, ["Vegan", "Gluten Free"], "", 0, state.length));
+
+// The Grill Station (1)
+state.push(createFoodItem(["High Protein"], "Grilled Hamburger", 1, 354, "3.5 oz patty", 25, 0, 28, [], "Dairy, Wheat", 1, state.length));
+state.push(createFoodItem(["Low Fat"], "Grilled Hot Dog", 1, 155, "1 hot dog", 6, 2, 14, [], "Dairy, Wheat", 1, state.length));
+state.push(createFoodItem([], "Grilled Steak", 2, 271, "3 oz", 26, 0, 18, ["Gluten Free"], "", 1, state.length));
+state.push(createFoodItem(["High Protein"], "Chicken Kabob", 1, 195, "1 skewer", 28, 4, 8, ["Gluten Free"], "", 1, state.length));
+state.push(createFoodItem([], "BBQ Pulled Pork", 1, 340, "4 oz", 23, 18, 21, [], "Wheat, Soy", 1, state.length));
+
+// Plant Forward Station (2)
+state.push(createFoodItem(["Low Fat"], "Vegetable Stir-Fry", 1, 180, "1.5 cups", 6, 28, 4, ["Vegan", "Gluten Free"], "Soy", 2, state.length));
+state.push(createFoodItem(["High Protein"], "Chickpea Curry", 2, 310, "1 cup", 12, 42, 7, ["Vegan"], "", 2, state.length));
+state.push(createFoodItem(["Low Carbs"], "Cauliflower Rice", 1, 25, "1 cup", 2, 5, 0.3, ["Vegan", "Gluten Free"], "", 2, state.length));
+state.push(createFoodItem([], "Lentil Soup", 2, 230, "1.5 cups", 18, 38, 1.5, ["Vegan"], "", 2, state.length));
+state.push(createFoodItem(["Low Fat"], "Grilled Veggie Burger", 1, 240, "1 burger", 12, 29, 8, ["Vegan"], "Wheat, Soy", 2, state.length));
+
+// Waffle Bar Station (3)
+state.push(createFoodItem(["High Protein"], "Belgian Waffles with Berries", 0, 310, "1 waffle", 9, 48, 11, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
+state.push(createFoodItem([], "Chocolate Chip Waffles", 0, 380, "1 waffle", 8, 52, 16, ["Vegetarian"], "Eggs, Dairy, Wheat, Soy", 3, state.length));
+state.push(createFoodItem(["Low Fat"], "Strawberry Waffles", 0, 280, "1 waffle", 7, 46, 8, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
+state.push(createFoodItem([], "Buttermilk Waffles", 0, 320, "1 waffle", 8, 50, 10, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
+state.push(createFoodItem(["Low Carbs"], "Whole Wheat Waffles", 0, 250, "1 waffle", 10, 38, 8, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
+
+const foodItem = document.getElementById("food-item");
+const nutritionBar = document.getElementById("nutrition-bar");
+const dietaryCard = document.getElementById("dietary-card");
+const dietaryBar = document.getElementById("dietary-bar");
+const allergensCard = document.getElementById("allergens-card");
+
+const exitBtn = document.getElementById("exit-btn");
+
+function render()
+{
+    if (isOnFoodView)
+    {
+        createHeading();
+        createNutritionBar();
+        document.getElementById("food-name").textContent = currentFood.foodName;
+        createTimeServed();
+        document.getElementById("calories").textContent = currentFood.calories;
+        document.getElementById("serving-size").textContent = currentFood.servingSize;
+        document.getElementById("protein-num").textContent = currentFood.gramsProtein;
+        document.getElementById("carbs-num").textContent = currentFood.gramsCarbs;
+        document.getElementById("fat-num").textContent = currentFood.gramsFat;
+        createDietaryCard();
+        createAllergensCard();
+    }
+}
+
+function createHeading()
+{
+    let i = currentFood.station;
+    let heading = document.getElementById("station");
+    if (i === 0) {
+        heading.textContent = "The Kitchen Table";
+    }
+    else if (i === 1) {
+        heading.textContent = "The Grill";
+    }
+    else if (i === 2) {
+        heading.textContent = "Plant Forward";
+    }
+    else {
+        heading.textContent = "Waffle Bar";
+    }
+
+}
+
+function createNutritionBar()
+{
+    nutritionBar.innerHTML = "";
+    let nutritionHeader = document.createElement("div");
+    nutritionHeader.classList.add("nutrition-info");
+    nutritionHeader.classList.add("bg-blue-100");
+    let strong = document.createElement("strong");
+    strong.textContent = "NUTRITIONAL DETAILS";
+    nutritionHeader.appendChild(strong);
+    nutritionBar.appendChild(nutritionHeader);
+
+    for (let i = 0; i < Math.min(currentFood.nutritionalInfo.length, 2); i++) /*only considers first two pieces of nutritional info*/
+    {
+        let detail = document.createElement("div");
+        detail.classList.add("nutrition-info");
+        let info = currentFood.nutritionalInfo[i].toUpperCase();
+        if (info === "HIGH PROTEIN") {
+            detail.classList.add("bg-green-100");
+        }
+        else if (info === "LOW CARBS") {
+            detail.classList.add("bg-yellow-100");
+        }
+        else if (info === "LOW FAT") {
+            detail.classList.add("bg-red-100");
+        }
+        let strong = document.createElement("strong");
+        strong.textContent = currentFood.nutritionalInfo[i].toUpperCase();
+        detail.appendChild(strong);
+        nutritionBar.appendChild(detail);
+    }
+}
+
+function createTimeServed()
+{
+    let meal = document.getElementById("time-served");
+    if (currentFood.timeServed === 0) {meal.textContent = "BREAKFAST (7AM-11AM)";}
+    else if (currentFood.timeServed === 1) {meal.textContent = "LUNCH (11AM-3PM)";}
+    else {meal.textContent = "DINNER (5PM-8:30PM)";}
+}
+
+function createDietaryCard()
+{
+    dietaryBar.innerHTML = "";
+    dietaryCard.classList.add("hidden");
+    if (currentFood.dietaryInfo.length !== 0) {
+        dietaryCard.classList.remove("hidden");
+        for (let i = 0; i < Math.min(currentFood.dietaryInfo.length, 4); i++) /*only considers first four pieces of dietary info*/
+        {
+            let detail = document.createElement("div");
+            detail.classList.add("dietary-info");
+            let strong = document.createElement("strong");
+            strong.textContent = currentFood.dietaryInfo[i];
+            detail.appendChild(strong);
+            dietaryBar.appendChild(detail);
+        }
+    }
+}
+
+function createAllergensCard()
+{
+    allergensCard.classList.add("hidden");
+    let currentAllergens = currentFood.allergens;
+    if (currentAllergens.trim() !== "") {
+        allergensCard.classList.remove("hidden");
+        document.getElementById("allergens").textContent = currentAllergens;
+    }
+}
+
+function switchToFoodView()
+{
+    foodItem.classList.remove("hidden");
+    isOnFoodView = true;
+    render();
+}
+
+function switchToListView()
+{
+    foodItem.classList.add("hidden");
+    isOnFoodView = false;
+    render();
+}
+
+let isOnFoodView = true; /*CHANGE TO FALSE AT THE END*/
+let currentFood = state[0];
+
+exitBtn.addEventListener('click', switchToListView);
+
+render();
