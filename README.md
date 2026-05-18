@@ -14,11 +14,11 @@ The list and food views are switched between via the food items in the list view
 As for storing the data, due to this being a proof of concept with a relatively small dataset, all food items are simply manually entered into the state array upon opening the website.
 
 # Stretch Goals
-One of our stretch goals was to have version control using Github, which we successfully implemented, with both of us having successful commits and merges to the project.
+One of our stretch goals was to have version control using our [Github repository](https://github.com/HappyAcccident/PitStop), which we successfully implemented, with both of us having successful commits and merges into the project.
 
 Another one of our stretch goals was to have the switching between the food view and the list view without having to fully reload the page, which we successfully implemented by hiding and showing our two mains for each view and our switchToFoodView and switchToListView functions in our app.js file.
 
-# Issues in Development
+# Reflection
 An issue we ran into in development was figuring out how to switch between the different views. At first, we attempted a simple .hidden class in the CSS, but the "display: none" attribute in .hidden wasn't powerful enough to override the other display attributes in the Id-level CSS, so we made specific class-Id tags in CSS for the food-view and list-view (as well as the dietary info and allergens, which are hidden if no info is provided).
 
 # Future Work
