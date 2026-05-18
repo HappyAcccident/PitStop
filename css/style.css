@@ -1,14 +1,28 @@
 * { font-family: "Helvetica", Arial, sans-serif; }
 
+#list-view {
+  display: grid;
+  place-items: center;
+}
+
+.station {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+#list-view.hidden {
+  display: none
+}
+
 #food-view {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background: rgba(137, 137, 137, 0.686);
 }
 
-.hidden {
+#food-view.hidden {
   display: none;
-  visibility: hidden;
 }
 
 .card {
@@ -22,9 +36,22 @@
   background: white;
 }
 
+.food-item {
+  text-wrap: nowrap;
+  cursor: pointer;
+}
+
 .divider {
   height: 1px;
   background: rgba(0,0,0,0.08);
+}
+
+.station-divider {
+  display: grid;
+  grid-template-columns: 9fr 1fr 9fr;
+  gap:5px;
+  color: gray;
+  text-wrap: nowrap;
 }
 
 .nutrition-info {
@@ -43,6 +70,10 @@
   background: #f3fcef;
   border-radius: 8px;
   color: rgb(0, 80, 0);
+}
+
+#dietary-card.hidden {
+  display: none;
 }
 
 #dietary-bar {
@@ -68,6 +99,10 @@
   background: #fcfcef;
   border-radius: 8px;
   color: rgb(77, 80, 0);
+}
+
+#allergens-card.hidden {
+  display: none;
 }
 
 #exit-btn-svg {
@@ -103,8 +138,16 @@
   color: gray;
 }
 
+.blue-text {
+  color: blue;
+}
+
 .small-text {
   font-size: 0.8rem;
+}
+
+#title {
+  font-size: 3rem;
 }
 
 .macro-num {
@@ -117,7 +160,7 @@
   text-wrap: nowrap;
 }
 
-#calories {
+.calories {
   color: blue;
   font-size: 3rem;
 }

@@ -192,5 +192,5 @@ let currentFood = state[0];
 
 exitBtn.addEventListener('click', switchToListView);
 
-switchToFoodView();
+switchToListView();
 render();
