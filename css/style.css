@@ -1,6 +1,6 @@
 * { font-family: "Helvetica", Arial, sans-serif; }
 
-#food-item {
+#food-view {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background: rgba(137, 137, 137, 0.686);

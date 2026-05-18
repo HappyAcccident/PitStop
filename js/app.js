@@ -58,7 +58,8 @@ state.push(createFoodItem(["Low Fat"], "Strawberry Waffles", 0, 280, "1 waffle",
 state.push(createFoodItem([], "Buttermilk Waffles", 0, 320, "1 waffle", 8, 50, 10, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
 state.push(createFoodItem(["Low Carbs"], "Whole Wheat Waffles", 0, 250, "1 waffle", 10, 38, 8, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
 
-const foodItem = document.getElementById("food-item");
+const listView = document.getElementById("list-view");
+const foodView = document.getElementById("food-view");
 const nutritionBar = document.getElementById("nutrition-bar");
 const dietaryCard = document.getElementById("dietary-card");
 const dietaryBar = document.getElementById("dietary-bar");
@@ -173,21 +174,23 @@ function createAllergensCard()
 
 function switchToFoodView()
 {
-    foodItem.classList.remove("hidden");
+    foodView.classList.remove("hidden");
+    listView.classList.add("hidden");
     isOnFoodView = true;
     render();
 }
 
 function switchToListView()
 {
-    foodItem.classList.add("hidden");
+    foodView.classList.add("hidden");
+    listView.classList.remove("hidden");
     isOnFoodView = false;
     render();
 }
 
-let isOnFoodView = true; /*CHANGE TO FALSE AT THE END*/
 let currentFood = state[0];
 
 exitBtn.addEventListener('click', switchToListView);
 
+switchToFoodView();
 render();
