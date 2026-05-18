@@ -6,89 +6,61 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="list-view">
-    <strong id="title-span"><span id="title">PitStop</span></strong>
+  <main id="list-view">
+    <strong id="title-span"><header id="title">PitStop</header></strong>
 
     <div class="station-divider">
-      <div class="divider"></div>
-      The Kitchen Table
-      <div class="divider"></div>
+      <div class="divider"></div>The Kitchen Table<div class="divider"></div>
     </div>
 
-    <div class="station" id="the-kitchen-table">
-      <button class="card food-item">
-        <strong><span>Buttermilk Pancakes</span></strong>
-        <span><strong><span class="blue-text">180</span></strong> kcal</span>
-      </button>
-    </div>
+    <section class="station" id="the-kitchen-table"></section>
 
     <div class="station-divider">
-      <div class="divider"></div>
-      The Grill
-      <div class="divider"></div>
+      <div class="divider"></div>The Grill<div class="divider"></div>
     </div>
 
-    <div class="station" id="the-grill">
-      <button class="card food-item">
-        <strong><span>Buttermilk Pancakes</span></strong>
-        <span><strong><span class="blue-text">180</span></strong> kcal</span>
-      </button>
-    </div>
+    <section class="station" id="the-grill"></section>
 
     <div class="station-divider">
-      <div class="divider"></div>
-      Plant Forward
-      <div class="divider"></div>
+      <div class="divider"></div>Plant Forward<div class="divider"></div>
     </div>
 
-    <div class="station" id="plant-forward">
-      <button class="card food-item">
-        <strong><span>Buttermilk Pancakes</span></strong>
-        <span><strong><span class="blue-text">180</span></strong><span class="gray-text"> kcal</span></span>
-      </button>
-    </div>
+    <section class="station" id="plant-forward"></section>
 
     <div class="station-divider">
-      <div class="divider"></div>
-      Waffle Bar
-      <div class="divider"></div>
+      <div class="divider"></div>Waffle Bar<div class="divider"></div>
     </div>
 
-    <div class="station" id="waffle-bar">
-      <button class="card food-item">
-        <strong><span>Buttermilk Pancakes</span></strong>
-        <span><strong><span class="blue-text">180</span></strong> kcal</span>
-      </button>
-    </div>
-  </div>
+    <section class="station" id="waffle-bar"></section>
+  </main>
 
-  <div id="food-view">
+  <main id="food-view">
     <div class="empty-space"></div>
     
     <div class="card">
       <strong><span id="station"></span></strong>
-      <div id="top-bar">
+      <section id="top-bar">
         <div id="nutrition-bar"></div>
-        <button id="exit-btn"><svg id="exit-btn-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-      </div>
+        <button id="exit-btn"><svg id="exit-btn-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"></path></svg></button> <!--stolen from random website-->
+      </section>
     
 
-      <div id="food-card">
+      <section id="food-card">
         <strong><p id="food-name"></p></strong>
         <strong><p id="time-served"></p></strong>
-      </div>
+      </section>
     
       <div class="divider"></div>
     
-      <div id="cal-card">
+      <section id="cal-card">
         <p class="gray-text small-text"><strong>TOTAL CALORIES</strong></p>
         <p><strong><span class="calories" id="calories"></span></strong><span class="gray-text"> kcal</span></p>
         <p><strong><span class="gray-text small-text">SERVING: </span><span id="serving-size"></span></strong></p>
-      </div>
+      </section>
     
       <div class="divider"></div>
     
-      <div id="macro-bar">
+      <section id="macro-bar">
         <div class="macro bg-green-100">
           <p class="gray-text small-text"><strong>PROTEIN</strong></p>
           <p><strong><span class="macro-num" id="protein-num"></span>g</strong></p>
@@ -103,21 +75,21 @@
           <p class="gray-text small-text"><strong>FAT</strong></p>
           <p><strong><span class="macro-num" id="fat-num">0</span>g</strong></p>
         </div>
-      </div>
+      </section>
     
-      <div id="dietary-card">
+      <section id="dietary-card">
         <span class="small-text"><strong>Dietary Information</strong></span>
         <div id="dietary-bar"></div>
-      </div>
+      </section>
     
-      <div id="allergens-card">
+      <section id="allergens-card">
         <span class="small-text"><strong>Allergens</strong></span>
         <p class="small-text" id="allergens"></p>
-      </div>
+      </section>
     
       <div class="empty-space"></div>
     </div>
-  </div>
+  </main>
 
   <script src="js/app.js"></script>
 </body>
