@@ -30,6 +30,7 @@ function createFoodItem(nutritionalInfo, /*array*/
     };
 }
 
+/*used AI to create a bunch of food items with realistic parameters*/
 // The Kitchen Table Station (0)
 state.push(createFoodItem(["Low Fat"], "Grilled Chicken Breast", 1, 165, "3.5 oz", 31, 0, 3.6, ["Halal", "Gluten Free"], "", 0, state.length));
 state.push(createFoodItem(["High Protein"], "Turkey Meatballs", 1, 190, "3 oz", 23, 8, 8, ["Gluten Free"], "", 0, state.length));
@@ -65,6 +66,11 @@ const dietaryCard = document.getElementById("dietary-card");
 const dietaryBar = document.getElementById("dietary-bar");
 const allergensCard = document.getElementById("allergens-card");
 
+const theKitchenTable = document.getElementById("the-kitchen-table");
+const theGrill = document.getElementById("the-grill");
+const plantForward = document.getElementById("plant-forward");
+const waffleBar = document.getElementById("waffle-bar");
+
 const exitBtn = document.getElementById("exit-btn");
 
 function render()
@@ -83,6 +89,68 @@ function render()
         createDietaryCard();
         createAllergensCard();
     }
+    else
+    {
+        clearStations();
+        for (let food of state)
+        {
+            addFood(food);
+        }
+    }
+}
+
+function addFood(food)
+{
+    let station = getStation(food);
+    let button = document.createElement("button");
+    button.classList.add("card");
+    button.classList.add("food-item");
+    button.addEventListener('click', function() {
+        currentFood = state[food.stateIndex];
+        switchToFoodView();
+    })
+    let foodHeading = document.createElement("strong");
+    let foodSpan = document.createElement("span");
+    foodSpan.textContent = food.foodName;
+    foodHeading.appendChild(foodSpan);
+    button.appendChild(foodHeading);
+    let calBox = document.createElement("span");
+    let calNum = document.createElement("strong");
+    let calText = document.createElement("span");
+    calText.classList.add("blue-text");
+    calText.textContent = food.calories;
+    calNum.appendChild(calText);
+    let calLabel = document.createElement("span");
+    calLabel.classList.add("gray-text");
+    calLabel.textContent = " kcal";
+    calBox.appendChild(calNum);
+    calBox.appendChild(calLabel);
+    button.appendChild(calBox);
+    station.appendChild(button);
+}
+
+function getStation(food)
+{
+    if (food.station === 0) {
+        return theKitchenTable;
+    }
+    else if (food.station === 1) {
+        return theGrill;
+    }
+    else if (food.station === 2) {
+        return plantForward;
+    }
+    else {
+        return waffleBar;
+    }
+}
+
+function clearStations()
+{
+    theKitchenTable.innerHTML = "";
+    theGrill.innerHTML = "";
+    plantForward.innerHTML = "";
+    waffleBar.innerHTML = "";
 }
 
 function createHeading()

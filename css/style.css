@@ -2,7 +2,6 @@
 
 #list-view {
   display: grid;
-  place-items: center;
 }
 
 .station {
@@ -148,6 +147,12 @@
 
 #title {
   font-size: 3rem;
+}
+
+#title-span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .macro-num {
