@@ -1,16 +1,20 @@
+//------------------------ DATA -------------------------
+
+/*Due to large amounts of data, the state array is filled later.*/
 let state = [];
 
-function createFoodItem(nutritionalInfo, /*array*/
+/*Helper function to create food items.*/
+function createFoodItem(nutritionalInfo, /*Array of up to two descriptors: High Protein, Low Fat, or Low Carbs.*/
                         foodName,
-                        timeServed, /*0 for breakfast, 1 for lunch, 2 for dinner*/
+                        timeServed, /*0 for Breakfast, 1 for Lunch, 2 for Dinner.*/
                         calories,
                         servingSize,
                         gramsProtein,
                         gramsCarbs,
                         gramsFat,
-                        dietaryInfo, /*array*/
+                        dietaryInfo, /*Array of up to four dietary descriptors.*/
                         allergens,
-                        station, /*0 for The Kitchen Table, 1 for The Grill, 2 for Plant Forward, and 3 for Waffle Bar*/
+                        station, /*0 for The Kitchen Table, 1 for The Grill, 2 for Plant Forward, and 3 for Waffle Bar.*/
                         stateIndex
                     )
 {
@@ -30,7 +34,7 @@ function createFoodItem(nutritionalInfo, /*array*/
     };
 }
 
-/*used AI to create a bunch of food items with realistic parameters*/
+/*Used AI to create a bunch of food items with realistic information.*/
 // The Kitchen Table Station (0)
 state.push(createFoodItem(["Low Fat"], "Grilled Chicken Breast", 1, 165, "3.5 oz", 31, 0, 3.6, ["Halal", "Gluten Free"], "", 0, state.length));
 state.push(createFoodItem(["High Protein"], "Turkey Meatballs", 1, 190, "3 oz", 23, 8, 8, ["Gluten Free"], "", 0, state.length));
@@ -59,6 +63,9 @@ state.push(createFoodItem(["Low Fat"], "Strawberry Waffles", 0, 280, "1 waffle",
 state.push(createFoodItem([], "Buttermilk Waffles", 0, 320, "1 waffle", 8, 50, 10, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
 state.push(createFoodItem(["Low Carbs"], "Whole Wheat Waffles", 0, 250, "1 waffle", 10, 38, 8, ["Vegetarian"], "Eggs, Dairy, Wheat", 3, state.length));
 
+//------------------------ DISPLAY -------------------------
+
+//Instantiating various parts of the site for later use.
 const listView = document.getElementById("list-view");
 const foodView = document.getElementById("food-view");
 const nutritionBar = document.getElementById("nutrition-bar");
@@ -73,9 +80,12 @@ const waffleBar = document.getElementById("waffle-bar");
 
 const exitBtn = document.getElementById("exit-btn");
 
+//Standard render function. Swaps between the two mains, food-view or list-view,
+//depending on if the user is currently selecting a food item to avoid completely
+//reloading the page.
 function render()
 {
-    if (isOnFoodView)
+    if (isOnFoodView) //If user is currently selecting a food item.
     {
         createHeading();
         createNutritionBar();
@@ -89,7 +99,7 @@ function render()
         createDietaryCard();
         createAllergensCard();
     }
-    else
+    else //If user is looking at the wider list of options.
     {
         clearStations();
         for (let food of state)
@@ -99,6 +109,9 @@ function render()
     }
 }
 
+//------------------------ HELPERS -------------------------
+
+//Adds food items to the wider list depending on their station.
 function addFood(food)
 {
     let station = getStation(food);
@@ -129,6 +142,7 @@ function addFood(food)
     station.appendChild(button);
 }
 
+//Gets the station of a food item using the station property.
 function getStation(food)
 {
     if (food.station === 0) {
@@ -145,6 +159,7 @@ function getStation(food)
     }
 }
 
+//Clears all stations before rendering.
 function clearStations()
 {
     theKitchenTable.innerHTML = "";
@@ -153,6 +168,7 @@ function clearStations()
     waffleBar.innerHTML = "";
 }
 
+//Creates the station heading for the food item at the very top of the card.
 function createHeading()
 {
     let i = currentFood.station;
@@ -172,6 +188,7 @@ function createHeading()
 
 }
 
+//Fills in the nutrition bar with the nutritionalInfo parameter.
 function createNutritionBar()
 {
     nutritionBar.innerHTML = "";
@@ -204,6 +221,7 @@ function createNutritionBar()
     }
 }
 
+//Uses the timeServed property to say whether the item is served at Breakfast, Lunch, or Dinner.
 function createTimeServed()
 {
     let meal = document.getElementById("time-served");
@@ -212,6 +230,7 @@ function createTimeServed()
     else {meal.textContent = "DINNER (5PM-8:30PM)";}
 }
 
+//Creates the dietary card using the dietary information provided in the dietaryInfo parameter.
 function createDietaryCard()
 {
     dietaryBar.innerHTML = "";
@@ -230,6 +249,7 @@ function createDietaryCard()
     }
 }
 
+//Creates the allergens card using the allergens parameter.
 function createAllergensCard()
 {
     allergensCard.classList.add("hidden");
@@ -240,6 +260,7 @@ function createAllergensCard()
     }
 }
 
+//Switches to the food view for when the user selects a food item from the list.
 function switchToFoodView()
 {
     foodView.classList.remove("hidden");
@@ -248,6 +269,7 @@ function switchToFoodView()
     render();
 }
 
+//Switches back to the list view when the user presses the exit button in food view.
 function switchToListView()
 {
     foodView.classList.add("hidden");
@@ -256,9 +278,10 @@ function switchToListView()
     render();
 }
 
-let currentFood = state[0];
+//------------------------ INITIALIZATION -------------------------
 
-exitBtn.addEventListener('click', switchToListView);
+let currentFood = state[0]; //Sets currentFood to an arbitrary food.
+exitBtn.addEventListener('click', switchToListView); //Adds event listener to the exit button.
 
-switchToListView();
+switchToListView(); //Initializes in list view.
 render();

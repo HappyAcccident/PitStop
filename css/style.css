@@ -53,6 +53,12 @@
   text-wrap: nowrap;
 }
 
+#nutrition-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
 .nutrition-info {
   padding: 0.25rem 0.6rem;
   font-size: 0.8rem;
@@ -168,12 +174,6 @@
 .calories {
   color: blue;
   font-size: 3rem;
-}
-
-#nutrition-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
 }
 
 #macro-bar {
