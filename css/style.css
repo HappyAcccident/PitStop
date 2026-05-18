@@ -1,0 +1,153 @@
+* { font-family: "Helvetica", Arial, sans-serif; }
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: rgba(137, 137, 137, 0.686);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid rgb(213, 213, 213);
+  border-radius: 8px;
+  background: white;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(0,0,0,0.08);
+}
+
+.nutrition-info {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+#dietary-card {
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid rgb(161, 218, 160);
+  background: #f3fcef;
+  border-radius: 8px;
+  color: rgb(0, 80, 0);
+}
+
+#dietary-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top:10px;
+  gap: 10px;
+}
+
+.dietary-info {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid green;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+#allergens-card {
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid rgb(218, 217, 160);
+  background: #fcfcef;
+  border-radius: 8px;
+  color: rgb(77, 80, 0);
+}
+
+#exit-btn-svg {
+  color:gray;
+  height: 25px;
+}
+
+#exit-btn {
+  background: #f7f7f7;
+  color: #808080;
+  height: 25px;
+  border: 1px solid #808080;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+#top-bar {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  height: 25px;
+  gap: 20px;
+}
+
+#food-name {
+  font-size: 1.5rem;
+}
+
+#time-served {
+  color: gray;
+}
+
+.gray-text {
+  color: gray;
+}
+
+.small-text {
+  font-size: 0.8rem;
+}
+
+.macro-num {
+  font-size: 2rem;
+}
+
+#calories {
+  color: blue;
+  font-size: 3rem;
+}
+
+#nutrition-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+#macro-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.macro {
+  display: flex; /* from google */
+  flex-direction: column; /*from ChatGPT*/
+  align-items: center; /*from ChatGPT*/
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 16px;
+}
+
+.bg-blue-100 {
+  background: #e3e5ff;
+  color: #352bc0;
+  border-color: #e3e5ff;
+}
+
+.bg-yellow-100 {
+  background: #fffbd7;
+  color: #c0bb2b;
+  border-color: #fffbd7;
+}
+
+.bg-red-100 {
+  background: #ffe0dd;
+  color: #c0392b;
+  border-color: #ffe0dd;
+}
