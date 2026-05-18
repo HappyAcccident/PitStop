@@ -13,7 +13,7 @@ The list and food views are switched between via the food items in the list view
 
 As for storing the data, due to this being a proof of concept with a relatively small dataset, all food items are simply manually entered into the state array upon opening the website.
 
-# Strech Goals
+# Stretch Goals
 One of our stretch goals was to have version control using Github, which we successfully implemented, with both of us having successful commits and merges to the project.
 
 Another one of our stretch goals was to have the switching between the food view and the list view without having to fully reload the page, which we successfully implemented by hiding and showing our two mains for each view and our switchToFoodView and switchToListView functions in our app.js file.
